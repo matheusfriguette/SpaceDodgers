@@ -45,12 +45,12 @@ public class GosmaMove : MonoBehaviour {
                 pontuou = true;
             }
         }
-
+    
     }
 
     private void Awake()
     {
-        player = GameObject.Find("Player");
+        player = GameObject.Find("Navex");
     }
 }
 
