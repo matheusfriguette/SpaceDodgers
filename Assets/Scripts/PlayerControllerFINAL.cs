@@ -12,6 +12,8 @@ public class PlayerControllerFINAL : MonoBehaviour {
     private Rigidbody rb;
     private AudioSource audioSource;
     private bool pulando = false;
+    private Vector3 posicaoInicial;
+    private Quaternion rotacaoInicial;
 
     void Start() {
         anim = GetComponent<Animator>();
@@ -60,5 +62,16 @@ public class PlayerControllerFINAL : MonoBehaviour {
             }
         }
     }
+
+    public void recomecar()
+    {
+        rb.useGravity = false;
+        rb.velocity = Vector3.zero;
+        rb.detectCollisions = true;
+        transform.localPosition = posicaoInicial;
+        transform.localRotation = rotacaoInicial;
+    }
+
+    
 
 }
