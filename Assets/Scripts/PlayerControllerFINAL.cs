@@ -19,7 +19,9 @@ public class PlayerControllerFINAL : MonoBehaviour {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
-        
+        posicaoInicial = transform.position; //new Vector3(-4f, -0.4f, 3.18f);
+        rotacaoInicial = transform.rotation;//new Quaternion(0f, 90, 0f, 0f);
+
     }
 
     void Update() {
@@ -68,6 +70,7 @@ public class PlayerControllerFINAL : MonoBehaviour {
         rb.useGravity = false;
         rb.velocity = Vector3.zero;
         rb.detectCollisions = true;
+        
         transform.localPosition = posicaoInicial;
         transform.localRotation = rotacaoInicial;
     }
