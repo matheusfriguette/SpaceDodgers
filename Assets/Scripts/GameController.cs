@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour {
     public GameObject gameOverPanel;
     private List<GameObject> obstaculos;
     public GameObject pontosPanel;
+    public GameObject creditsPanel;
 
 
     public static GameController instancia = null;
@@ -39,6 +40,7 @@ public class GameController : MonoBehaviour {
         menuPanel.SetActive(true);
         gameOverPanel.SetActive(false);
         pontosPanel.SetActive(false);
+        creditsPanel.SetActive(false);
     }
 	
 
@@ -61,24 +63,39 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    IEnumerator GerarPlanetas()
-    {
-        if (GameController.instancia.estado == Estado.Jogando)
-        {
-            Vector3 pos = new Vector3(-0.5f, 2.37f, 8.25f);
-            GameObject obj = Instantiate(planeta, pos, Quaternion.identity) as GameObject;
-            yield return new WaitForSeconds(espera);
-        }
-    }
+   
 
     public void PlayerComecou() {
         estado = Estado.Jogando;
         menuCamera.SetActive(false);
         menuPanel.SetActive(false);
         pontosPanel.SetActive(true);
+        creditsPanel.SetActive(false);
         atualizarPontos(0);
         StartCoroutine(GerarObstaculos());
-        StartCoroutine(GerarPlanetas());
+ 
+    }
+
+    public void PlayerCreditos()
+    {
+        estado = Estado.AguardandoComecar;
+        menuCamera.SetActive(true);
+        menuPanel.SetActive(false);
+        gameOverPanel.SetActive(false);
+        pontosPanel.SetActive(false);
+        creditsPanel.SetActive(true);
+
+    }
+
+    public void PlayerCreditosV()
+    {
+        estado = Estado.AguardandoComecar;
+        menuCamera.SetActive(true);
+        menuPanel.SetActive(true);
+        gameOverPanel.SetActive(false);
+        pontosPanel.SetActive(false);
+        creditsPanel.SetActive(false);
+
     }
 
     public void PlayerMorreu() {
@@ -116,6 +133,7 @@ public class GameController : MonoBehaviour {
         estado = Estado.AguardandoComecar;
         menuCamera.SetActive(true);
         menuPanel.SetActive(true);
+        creditsPanel.SetActive(false);
         gameOverPanel.SetActive(false);
         pontosPanel.SetActive(false);
         GameObject.Find("Navex").GetComponent<PlayerControllerFINAL>().recomecar();

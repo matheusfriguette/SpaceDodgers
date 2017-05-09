@@ -20,7 +20,7 @@ public class PlanetaMove : MonoBehaviour
 
         if (transform.position.x < limite)
         {
-            transform.position = new Vector3(retorno, transform.position.y, transform.position.z);
+            transform.position = new Vector3(retorno, Random.Range(-3, 3f), transform.position.z);
         }
     }
 }
